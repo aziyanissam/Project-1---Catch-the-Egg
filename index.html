@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catch The Egg</title>
     <link rel="stylesheet" href="style.css" >
+    
 </head>
 <body>
     
@@ -13,6 +14,7 @@
         
         <img class="logo-img" src="Images/Catch The Egg.jpg" alt="">
         <button id="start-button"><h1>Start Game</h1></button>
+        
         <br>
         <div class="objective"> 
             <h3>Objective</h3>
@@ -20,13 +22,17 @@
             <img class="firstimg" src="Images/download (1).png" alt="">
             <p class="para">THE GAME ENDS IF AN EGG IS DROPPED </p>
             <hr>
-            <p class="para">Gather all the eggs within the time limit to progress to the next level</p>
+            <p class="para">Gather all the eggs within the time limit to win</p>
         </div>
       
     </div>
     <div class="game-board">
        <canvas id="canvas"></canvas>
     </div>
+    <div class="gameover">
+        <button class="restart"> Restart </button>
+    </div>
+    
    
 <script src="script.js"></script>
 </body>
