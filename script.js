@@ -2,6 +2,8 @@
   const ctx = canvas.getContext("2d");
   const startScreen = document.querySelector("#firstPage");
   const lastScreen = document.querySelector(".gameover");
+  const restartButton = document.querySelector("#restart")
+ 
 
   //setting canvas height and width
   
@@ -14,11 +16,15 @@
   let gameOver = false;
   
   // //basket variable
+  
   let bWidth = 110;
   let bHeight = 120;
   let bX = 730;
   let bY = 650;
-  const bSpeedValue = 5
+  const bSpeedValue = 5;
+  let y = 170;
+  let radiusX = 10;
+  let radiusY = 15;
 
 
   //backgroung image
@@ -49,20 +55,14 @@
       gameOver = false;
       StartGame();
       let intervelId = setInterval(()=>{
-        // let x = [350,550,750,950,1150]
-        // const randomIndex = Math.floor(Math.random() * eggs.length);
-        // for (i=0;i<x.length;i++){
-          
-        //   let newEgg =  new Egg(x[i], 170)
-        //   eggs.push(newEgg)
-        // }
+        
         const x = [350, 550, 750, 950, 1150];
         const randomIndex = Math.floor(Math.random() * x.length);
-        for(i=0;i<x.length;i++){
+        
         const newX= x[randomIndex];
         const newEgg = new Egg(newX, 170);
         eggs.push(newEgg);
-        }
+        
 
       },3000)
       
@@ -80,6 +80,7 @@
         }
       }
     }
+    
 
   
   
@@ -113,45 +114,48 @@
     beyondScreen() {
       return this.y - this.radiusY > canvas.height;
     }
-    hitBasket(){
-      if (this.x >= this.bWidth && this.x <= bWidth + bWidth) {
-        // Check if the top of the egg is touching the top of the basket
-        if (this.y + this.radiusY >= bHeight && this.y + this.radiusY <= bHeight ) {
-          // If the egg is touching the top of the basket, remove it from the eggs array
-          const index = eggs.indexOf(egg);
-          return eggs.splice(index, 1);
-          
-        }
+    
+    
       }
-    }
-  }
+    
+    const eggs = [];
+    
   
 
   
-  const eggs = [];
+ 
   
 
 
     function drawScore() {
       ctx.beginPath();
-      ctx.font = "30px sans-serif";
-      ctx.fillStyle = "green";
+      ctx.font = "30px Verdana";
+      ctx.fillStyle = "black";
       ctx.fillText(`Score : ${totalScore}`, 10, 30);
       ctx.closePath();
     }
+    function restartGame(){
+      totalScore = 0;
+      gameOver = false;
+      eggs.length = 0;
+      clearInterval(intervelId);
+      StartGame()
+    }
+    restartButton.addEventListener('click', restartGame);
     function drawGameOver() {
+      
       ctx.beginPath();
       ctx.font = "40px sans-serif";
-      ctx.fillStyle = "red";
+      ctx.fillStyle = "black";
       ctx.fillText(`GAME OVER ${totalScore} points`, canvas.width/2, canvas.height/2);
       
       ctx.closePath();
       lastScreen.style.display = "block"
-      canvas.style.display = "none"
-
       
+      canvas.style.display = "none"
+    }
     
-   }
+    
     let animationFrameId;
   
 
@@ -168,6 +172,7 @@
     ctx.drawImage(henImg5, 1100, 90, 100, 100)
     ctx.drawImage(basketImg, bX, bY, bWidth, bHeight )
     basketMove()
+    drawScore()
     
       for(i=0;i<eggs.length;i++){
         
@@ -176,9 +181,20 @@
         cancelAnimationFrame(animationFrameId);
         drawGameOver()
       clearInterval(intervelId)
-          
+
+      }
+
+      else if (eggs[i].y + radiusY > bY && eggs[i].y + radiusY < bY + 10 && eggs[i].x > bX && eggs[i].x < bX + bWidth) {
+        totalScore += 1;
+        eggs.splice(i, 1);
+        drawScore()
+    
+    
+      
+    }
           
       }
+
       
       
         
@@ -186,9 +202,9 @@
 
       
       
-    }
+    
     animationFrameId = requestAnimationFrame(StartGame);
-  
+    
     document.addEventListener("keydown", event => {
       console.log("event",event)
       if (event.key === "ArrowLeft") {
@@ -207,6 +223,6 @@
     });
   
       
-  }
+  }}
   
-}   
+  
