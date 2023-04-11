@@ -65,8 +65,9 @@
         if (bX > 0) {
           bX -= bSpeedValue;
         }
-      } else if (isBasketGoingRight) {
-        if (basketX < canvas.width - bWidth) {
+      } 
+      else if (isBasketGoingRight) {
+        if (bX < canvas.width - bWidth) {
           bX += bSpeedValue;
         }
       }
@@ -138,53 +139,64 @@
     if (eggY >= canvas.height - radiusY && egg1X >= bX - bWidth/2 && egg1X <= bX + bWidth/2) {
       
       totalScore++;
-      egg1X = Math.floor(Math.random() * (canvas.width - radiusY));
-      eggY = 0;
+      egg1X = 350;
+      eggY = 90;
     }
     if (eggY >= canvas.height - radiusY && egg2X >= bX - bWidth/2 && egg2X <= bX + bWidth/2) {
       
       totalScore++;
-      egg2X = Math.floor(Math.random() * (canvas.width - radiusY));
-      eggY = 0;
+      egg2X = 550;
+      eggY = 90;
     }
     if (eggY >= canvas.height - radiusY && egg3X >= bX - bWidth/2 && egg3X <= bX + bWidth/2) {
       
       totalScore++;
-      egg3X = Math.floor(Math.random() * (canvas.width - radiusY));
-      eggY = 0;
+      egg3X = 750;
+      eggY = 90;
     }
     if (eggY >= canvas.height - radiusY && egg4X >= bX - bWidth/2 && egg4X <= bX + bWidth/2) {
       
       totalScore++;
-      egg4X = Math.floor(Math.random() * (canvas.width - radiusY));
-      eggY = 0;
+      egg4X = 950;
+      eggY = 90;
     }
     if (eggY >= canvas.height - radiusY && egg5X >= bX - bWidth/2 && egg5X <= bX + bWidth/2) {
       
       totalScore++;
-      egg5X = Math.floor(Math.random() * (canvas.width - radiusY));
-      eggY = 0;
+      egg5X = 1150
+      eggY = 90;
     }
     if (eggY > canvas.height) {
       gameOver = true
 
-    }}
-
-    function drawScore() {
-      ctx.beginPath();
-      ctx.font = "30px sans-serif";
-      ctx.fillStyle = "green";
-      ctx.fillText(`Score : ${totalScore}`, 10, 30);
-      ctx.closePath();
     }
-    function drawGameOver() {
-      ctx.beginPath();
-      ctx.font = "40px sans-serif";
-      ctx.fillStyle = "green";
-      ctx.fillText(`GAME OVER ${totalScore} points`, 50, 200);
-      ctx.closePath();
+    if (eggY >= canvas.height - radiusY) {
+      eggY = 0; 
+      egg1X = Math.floor(Math.random() * (canvas.width - radiusY));
+      egg2X = Math.floor(Math.random() * (canvas.width - radiusY));
+      egg3X = Math.floor(Math.random() * (canvas.width - radiusY));
+      egg4X = Math.floor(Math.random() * (canvas.width - radiusY));
+      egg5X = Math.floor(Math.random() * (canvas.width - radiusY)); 
     }
+  }
 
+    // function drawScore() {
+    //   ctx.beginPath();
+    //   ctx.font = "30px sans-serif";
+    //   ctx.fillStyle = "green";
+    //   ctx.fillText(`Score : ${totalScore}`, 10, 30);
+    //   ctx.closePath();
+    // }
+    // function drawGameOver() {
+    //   ctx.beginPath();
+    //   ctx.font = "40px sans-serif";
+    //   ctx.fillStyle = "red";
+    //   ctx.fillText(`GAME OVER ${totalScore} points`, canvas.width/2, canvas.height/2);
+    //   ctx.closePath();
+
+      
+    
+   // }
     let animationFrameId;
   
 
@@ -205,18 +217,16 @@
     drawEgg4()
     drawEgg5()
     update()
-    if (gameOver) {
-      cancelAnimationFrame(animationFrameId);
-      drawGameOver()
-      setTimeout(() => {
-        startScreen.style.display = "block"
-        canvas.style.display = "none"
-      },"2500");
+    // if (gameOver) {
+    //   cancelAnimationFrame(animationFrameId);
+      
+    //   drawGameOver()
+      
      
       
-    } else {
-      animationFrameId = requestAnimationFrame(StartGame);
-    }
+    // } else {
+    //   animationFrameId = requestAnimationFrame(StartGame);
+    // }
     
     document.addEventListener('mousemove', function(event) {
       
@@ -234,4 +244,4 @@
     
     requestAnimationFrame(StartGame)
   }
-}
+}   

@@ -6,6 +6,7 @@ body{
     background-size: cover;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
+
 }
 
 #canvas{
@@ -22,10 +23,7 @@ body{
     flex-direction: column;
    
 }
-#canvas{
-    max-width: 100%;
-    height: auto;
-}
+
 #firstPage h1{
     margin: 0;
 }
@@ -41,6 +39,7 @@ body{
     width: 500px;
     text-align: center;
     margin-top: 10px;
+    padding-bottom: 36px;
 
 }
 .firstimg{
@@ -62,10 +61,7 @@ body{
         flex-direction: column;
        
     }
-    #canvas{
-        max-width: 100%;
-        height: auto;
-    }
+    
     #firstPage h1{
         margin: 0;
     }
@@ -81,6 +77,7 @@ body{
         height: 200px;
         width: 500px;
         text-align: center;
+        padding-bottom: 36px;
     
     }
     .firstimg{
@@ -102,10 +99,7 @@ body{
         flex-direction: column;
        
     }
-    #canvas{
-        max-width: 100%;
-        height: auto;
-    }
+    
     #firstPage h1{
         margin: 0;
     }
@@ -121,6 +115,7 @@ body{
         height: 200px;
         width: 500px;
         text-align: center;
+        padding-bottom: 36px;
     
     }
     .firstimg{
@@ -131,45 +126,43 @@ body{
         padding-bottom: 120px;
     }
     }
-    @media (min-width: 767px) and (max-width: 961px){
-        #firstPage{
+@media (min-width: 767px) and (max-width: 961px){
+    #firstPage{
         
-            height:750px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: end;
-            flex-direction: column;
+        height:750px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        flex-direction: column;
            
-        }
-        #canvas{
-            max-width: 100%;
-            height: auto;
-        }
-        #firstPage h1{
-            margin: 0;
-        }
+    }
         
-        .para{
-            margin: 0;
-            font-size: 15px;
-        }
+    #firstPage h1{
+        margin: 0;
+    }
         
-        .objective{
+    .para{
+        margin: 0;
+        font-size: 15px;
+}
+        
+    .objective{
             
-            background-color: #dcd8d3;
-            height: 200px;
-            width: 500px;
-            text-align: center;
+        background-color: #dcd8d3;
+        height: 200px;
+        width: 500px;
+        text-align: center;
+        padding-bottom: 36px;
         
-        }
-        .firstimg{
-            height: 50px;
-            width: 50px;
-        }
-        .logo-img{
-            padding-bottom: 120px;
-        }
+    }
+    .firstimg{
+        height: 50px;
+        width: 50px;
+    }
+    .logo-img{
+        padding-bottom: 120px;
+    }
 }
 @media (min-width: 1024px) {
     #firstPage{
@@ -182,10 +175,7 @@ body{
         flex-direction: column;
        
     }
-    #canvas{
-        max-width: 100%;
-        height: auto;
-    }
+    
     #firstPage h1{
         margin: 0;
     }
@@ -201,6 +191,7 @@ body{
         height: 200px;
         width: 500px;
         text-align: center;
+        padding-bottom: 36px;
     
     }
     .firstimg{
