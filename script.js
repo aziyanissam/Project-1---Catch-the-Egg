@@ -3,6 +3,8 @@
   const startScreen = document.querySelector("#firstPage");
   const lastScreen = document.querySelector(".gameover");
   const restartButton = document.querySelector("#restart")
+  const audio1 = document.querySelector("#my-audio1");
+  const audio2 = document.querySelector("#my-audio2");
  
 
   //setting canvas height and width
@@ -89,7 +91,7 @@
     constructor(x, y) {
       this.x = x;
       this.y = y;
-      this.speed = 5; 
+      this.speed = 3; 
       this.radiusX = 10; 
       this.radiusY = 15;
       this.bHeight = 120;
@@ -109,7 +111,9 @@
   
     update() {
       this.y += this.speed;
+      
       this.draw();
+
     }
     beyondScreen() {
       return this.y - this.radiusY > canvas.height;
@@ -148,11 +152,8 @@
       ctx.font = "40px sans-serif";
       ctx.fillStyle = "black";
       ctx.fillText(`GAME OVER ${totalScore} points`, canvas.width/2, canvas.height/2);
-      
       ctx.closePath();
-      lastScreen.style.display = "block"
       
-      canvas.style.display = "none"
     }
     
     
@@ -174,19 +175,31 @@
     basketMove()
     drawScore()
     
+    
       for(i=0;i<eggs.length;i++){
         
         eggs[i].update()
       if (eggs[i].beyondScreen()) {
-        cancelAnimationFrame(animationFrameId);
+        lastScreen.style.display = "block"
+        
+        canvas.style.display = "none"
+        audio2.play()
+        audio2.addEventListener("ended", function() {
+          audio2.currentTime = 0;
+          audio2.pause();
+        });
+        
         drawGameOver()
-      clearInterval(intervelId)
+        cancelAnimationFrame(animationFrameId);
+        
+        clearInterval(intervelId)
 
       }
 
       else if (eggs[i].y + radiusY > bY && eggs[i].y + radiusY < bY + 10 && eggs[i].x > bX && eggs[i].x < bX + bWidth) {
         totalScore += 1;
         eggs.splice(i, 1);
+        audio1.play()
         drawScore()
     
     
@@ -204,6 +217,7 @@
       
     
     animationFrameId = requestAnimationFrame(StartGame);
+    
     
     document.addEventListener("keydown", event => {
       console.log("event",event)

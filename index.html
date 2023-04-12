@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Images/Catch The Egg.jpg" type="image/x-icon">
+
     <title>Catch The Egg</title>
     <link rel="stylesheet" href="style.css" >
     
@@ -20,17 +22,22 @@
             <h3>Objective</h3>
             <p class="para">MOVE THE BASKET LEFT AND RIGHT WITH MOUSE</p>
             <img class="firstimg" src="Images/download (1).png" alt="">
-            <p class="para">THE GAME ENDS IF AN EGG IS DROPPED </p>
+            
             <hr>
-            <p class="para">Gather all the eggs within the time limit to win</p>
+            <p class="para">THE GAME ENDS IF AN EGG IS DROPPED </p>
         </div>
       
     </div>
     <div class="game-board">
+        <audio id="my-audio1" src="Sound/XT3NDHP-egg-squeeze.mp3"></audio>
        <canvas id="canvas"></canvas>
     </div>
     <div class="gameover">
         <div class="innerDiv">
+            <img src="Images/farmer.png" alt="">
+            <audio id="my-audio2" src="Sound/UC3CKCR-game-over-a.mp3"></audio>
+
+            <h2>GAME OVER</h2>
         <button id="restart"> Restart </button>
         </div>
     </div>
