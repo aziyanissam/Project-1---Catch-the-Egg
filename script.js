@@ -5,7 +5,8 @@
   const restartButton = document.querySelector("#restart")
   const audio1 = document.querySelector("#my-audio1");
   const audio2 = document.querySelector("#my-audio2");
- 
+  let scoreElement = document.querySelector("#scoreElement")
+ const audio3 = new Audio("Sound/UC3CKCR-game-over-a.mp3")
 
   //setting canvas height and width
   
@@ -117,20 +118,11 @@
     }
     beyondScreen() {
       return this.y - this.radiusY > canvas.height;
-    }
-    
-    
-      }
+     } }
     
     const eggs = [];
-    
-  
 
-  
- 
-  
-
-
+    //draw score
     function drawScore() {
       ctx.beginPath();
       ctx.font = "30px Verdana";
@@ -138,28 +130,36 @@
       ctx.fillText(`Score : ${totalScore}`, 10, 30);
       ctx.closePath();
     }
+    
+
+    //restart
     function restartGame(){
       totalScore = 0;
       gameOver = false;
-      eggs.length = 0;
+      eggs.length=0;
       clearInterval(intervelId);
       StartGame()
     }
     restartButton.addEventListener('click', restartGame);
+
+    //draw gameover
     function drawGameOver() {
       
       ctx.beginPath();
       ctx.font = "40px sans-serif";
       ctx.fillStyle = "black";
       ctx.fillText(`GAME OVER ${totalScore} points`, canvas.width/2, canvas.height/2);
+      
+      
+      
       ctx.closePath();
       
     }
-    
+  //lastScreen.querySelector(".innerDiv").appendChild(drawGameOver());
     
     let animationFrameId;
-  
 
+    //start game
   function StartGame(){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     startScreen.style.display = "none"
@@ -175,21 +175,22 @@
     basketMove()
     drawScore()
     
-    
+    //calling update function
       for(i=0;i<eggs.length;i++){
         
         eggs[i].update()
       if (eggs[i].beyondScreen()) {
         lastScreen.style.display = "block"
-        
+        scoreElement.innerText = totalScore;
         canvas.style.display = "none"
-        audio2.play()
-        audio2.addEventListener("ended", function() {
-          audio2.currentTime = 0;
-          audio2.pause();
-        });
+        audio3.play()
+        // audio2.addEventListener("ended", function() {
+        //   audio2.currentTime = 0;
+        //   audio2.pause();
+        // });
         
         drawGameOver()
+       
         cancelAnimationFrame(animationFrameId);
         
         clearInterval(intervelId)
@@ -200,27 +201,13 @@
         totalScore += 1;
         eggs.splice(i, 1);
         audio1.play()
-        drawScore()
-    
-    
-      
-    }
-          
+        drawScore()}
       }
-
-      
-      
-        
-      
-
-      
-      
-    
-    animationFrameId = requestAnimationFrame(StartGame);
+      animationFrameId = requestAnimationFrame(StartGame);
     
     
     document.addEventListener("keydown", event => {
-      console.log("event",event)
+      
       if (event.key === "ArrowLeft") {
         isBasketGoingLeft = true;
         console.log("moving left")
@@ -237,6 +224,7 @@
     });
   
       
-  }}
+  }
+}
   
   

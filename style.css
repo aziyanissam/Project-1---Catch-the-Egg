@@ -5,6 +5,14 @@ body{
     background-image: url(Images/fh.jpg);
     background-size: cover;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
 
 }
@@ -17,19 +25,32 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     
     
 }
 .innerDiv{
     height: 400px;
     width: 600px;
-    background-color: rgb(185, 183, 180);
+    background-color: #784e1e;
     text-align: center;
-    margin: 0 auto;
-    color: rgb(40, 26, 9)
-    
+    padding: 20px;
+    border-radius: 5px;
+    margin: auto;
+    color:#160d01;
+  
   
     
+}
+.innerDiv img{
+    padding-top: 40px;
+    
+  
+}
+.innerDiv h2{
+    padding-left: 30px;
+    font-size: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 #my-audio1 {
     position: absolute;
@@ -46,6 +67,7 @@ body{
 
 #restart{
     font-size: 30px;
+    margin-left : -5px;
     
 }
 
