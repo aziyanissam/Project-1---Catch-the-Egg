@@ -20,6 +20,7 @@
   let isBasketGoingLeft = false;
   let isBasketGoingRight = false;
   let intervelId;
+  let speedIntervalId;
   
   // //basket variable
   
@@ -31,6 +32,7 @@
   let y = 170;
   let radiusX = 10;
   let radiusY = 15;
+  let speed = 3
 
 
   //backgroung image
@@ -73,6 +75,11 @@
 
       },3000)
       
+      let speedIntervalId = setInterval(() => {
+        for (let i = 0; i < eggs.length; i++) {
+          eggs[i].speed += 1;
+        }
+      }, 10000);
     };
 
     function basketMove(){
@@ -109,6 +116,7 @@
       ctx.stroke();
       ctx.closePath();
     }
+    
   
     update() {
       this.y += this.speed;
@@ -187,6 +195,7 @@
           drawGameOver()
           cancelAnimationFrame(animationFrameId);
           clearInterval(intervelId)
+          clearInterval(speedIntervalId)
 
         }
 
