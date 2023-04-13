@@ -58,7 +58,7 @@ Catch the Egg is a game, which takes place in a Farm, where the player move bask
 
 - [Repo Link](https://github.com/aziyanissam/Project-1---Catch-the-Egg.git)
 - [Deploy Link]( https://aziyanissam.github.io/Project-1---Catch-the-Egg/)
-- [Slide Link]()
+- [Slide Link](https://docs.google.com/presentation/d/1AGZ8AiinOyRpRmuz-iwCZAHWNJ7OKis__Gx_fuwLjek/edit?usp=sharing)
 
 
 
