@@ -1,6 +1,7 @@
 body{
     margin: 0;
 }
+
 #firstPage{
     background-image: url(Images/fh.jpg);
     background-size: cover;
@@ -13,22 +14,19 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-
-
 }
+
 .gameover{
     height: 800px;
     width: 100%;
-    
     background-image: url("Images/fh.jpg");
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    
-    
 }
+
 .innerDiv{
     height: 400px;
     width: 600px;
@@ -38,37 +36,35 @@ body{
     border-radius: 5px;
     margin: auto;
     color:#160d01;
-  
-  
-    
 }
+
 .innerDiv img{
     padding-top: 40px;
-    
-  
 }
+
 .innerDiv h2{
     padding-left: 30px;
     font-size: 30px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 #my-audio1 {
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
-  }
+}
+
 #my-audio2{
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
-  }
+}
 
 #restart{
     font-size: 30px;
     margin-left : -5px;
-    
 }
 
 @media (max-width: 767px) {

@@ -6,17 +6,20 @@
   const audio1 = document.querySelector("#my-audio1");
   const audio2 = document.querySelector("#my-audio2");
   let scoreElement = document.querySelector("#scoreElement")
- const audio3 = new Audio("Sound/UC3CKCR-game-over-a.mp3")
+  const audio3 = new Audio("Sound/UC3CKCR-game-over-a.mp3")
 
   //setting canvas height and width
   
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    //variable
+    
+  //variable
 
-  
   let totalScore = 0;
   let gameOver = false;
+  let isBasketGoingLeft = false;
+  let isBasketGoingRight = false;
+  let intervelId;
   
   // //basket variable
   
@@ -46,17 +49,18 @@
   const basketImg = new Image()
   basketImg.src = "Images/bask.png"
 
-  let isBasketGoingLeft = false;
-  let isBasketGoingRight = false;
-  let intervelId;
-
+  
+//window open
   window.onload = () => {
     lastScreen.style.display = "none"
     canvas.style.display = "none"
-  
+
+    //clicking startbutton
     document.getElementById('start-button').onclick = () => {
       gameOver = false;
       StartGame();
+
+      //setting interval for the time btw egg to fall
       let intervelId = setInterval(()=>{
         
         const x = [350, 550, 750, 950, 1150];
@@ -72,16 +76,12 @@
     };
 
     function basketMove(){
-      if (isBasketGoingLeft) {
-        if (bX > 0) {
-          bX -= bSpeedValue;
-        }
-      } 
-      else if (isBasketGoingRight) {
-        if (bX < canvas.width - bWidth) {
-          bX += bSpeedValue;
-        }
+      if (bX < 0) {
+        bX = 0;
+      } else if (bX + bWidth > canvas.width) {
+        bX = canvas.width - bWidth;
       }
+    
     }
     
 
@@ -177,51 +177,32 @@
     
     //calling update function
       for(i=0;i<eggs.length;i++){
-        
         eggs[i].update()
-      if (eggs[i].beyondScreen()) {
-        lastScreen.style.display = "block"
-        scoreElement.innerText = totalScore;
-        canvas.style.display = "none"
-        audio3.play()
-        // audio2.addEventListener("ended", function() {
-        //   audio2.currentTime = 0;
-        //   audio2.pause();
-        // });
-        
-        drawGameOver()
-       
-        cancelAnimationFrame(animationFrameId);
-        
-        clearInterval(intervelId)
+        if (eggs[i].beyondScreen()) {
 
-      }
+          lastScreen.style.display = "block"
+          scoreElement.innerText = totalScore;
+          canvas.style.display = "none"
+          audio3.play()
+          drawGameOver()
+          cancelAnimationFrame(animationFrameId);
+          clearInterval(intervelId)
 
-      else if (eggs[i].y + radiusY > bY && eggs[i].y + radiusY < bY + 10 && eggs[i].x > bX && eggs[i].x < bX + bWidth) {
-        totalScore += 1;
-        eggs.splice(i, 1);
-        audio1.play()
-        drawScore()}
+        }
+
+        else if (eggs[i].y + radiusY > bY && eggs[i].y + radiusY < bY + 10 && eggs[i].x > bX && eggs[i].x < bX + bWidth) {
+          totalScore += 1;
+          eggs.splice(i, 1);
+          audio1.play()
+          drawScore()}
       }
       animationFrameId = requestAnimationFrame(StartGame);
+      canvas.addEventListener("mousemove", event => {
+        const rect = canvas.getBoundingClientRect();
+        bX = event.clientX - rect.left - (bWidth / 2);
+      });
     
     
-    document.addEventListener("keydown", event => {
-      
-      if (event.key === "ArrowLeft") {
-        isBasketGoingLeft = true;
-        console.log("moving left")
-      }
-      if (event.key === "ArrowRight") {
-        isBasketGoingRight = true;
-        console.log("moving right")
-      }
-    });
-    document.addEventListener("keyup", event => {
-      isBasketGoingLeft = false;
-      isBasketGoingRight = false;
-      console.log("stop movement")
-    });
   
       
   }
