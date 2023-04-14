@@ -2,7 +2,7 @@
 
 ## Description
 
-Catch the Egg is a game, which takes place in a Farm, where the player move basket horizontally to collect the Eggs. Eggs are laid by the chickens at the roof of the farm house. The game ends when an egg falls down. A score is added for every catch of eggs.
+Catch the Egg is a game, which takes place in a Farm, where the player move basket horizontally to collect the Eggs. Eggs are laid by the chickens from the roof of the farm house. The game ends when an egg falls down. A score is added for every catch of eggs.
 
 ## MVP
 
